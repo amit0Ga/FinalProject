@@ -11,7 +11,22 @@ import org.json.*;
 public class Utilities {
 	public static void main (String args[])
 	{
+<<<<<<< HEAD
 		String resultsApi = "https://apiv2.apifootball.com/?action=get_events&from=$&to=*&league_id=468&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";		
+=======
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String today = dateFormat.format(date).toString();
+        System.out.println(Integer.parseInt(today.substring(4, 7)) % 12);
+        String twoMonthAgo = today.replace(today.substring(4, 6),String.valueOf(Integer.parseInt(today.substring(4, 7))-2 % 12));
+		String resultsApi = "https://apiv2.apifootball.com/?action=get_events&from="+twoMonthAgo+"&to="+today+"&league_id=468&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
+
+		
+//chack if connect to git 
+		System.out.println(resultsApi);
+
+		
+>>>>>>> 65c423d7bda08d4c78454108376ac521278e201b
 		try {
 			readUrl(prepareResultsUrlTwoMonthsAgo(resultsApi));
 		} catch (Exception e) {
