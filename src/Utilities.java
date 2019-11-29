@@ -1,4 +1,6 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -8,62 +10,76 @@ import java.util.*;
 import org.json.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 
 public class Utilities {
+	
+	static ApplicationData Data;
+	
 	public static void main(String args[]) {
-		String resultsApi = "https://apiv2.apifootball.com/?action=get_events&from=$&to=*&league_id=468&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
-		try {
-			readUrl(prepareResultsUrlTwoMonthsAgo(resultsApi));
+		//String resultsApi = "https://apiv2.apifootball.com/?action=get_events&from=$&to=*&league_id=149&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
+		//Data.URLAddress = prepareResultsUrlTwoMonthsAgo(resultsApi);
+		
+		Data = new ApplicationData();
+		
+		try {	
+			String littleurl = "https://apiv2.apifootball.com/?action=get_events&from=2019-11-27&to=2019-11-29&league_id=149&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
+			//Data.URLAddress = "https://apiv2.apifootball.com/?action=get_events&from=2019-11-27&to=2019-11-29&league_id=149&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
+			Data.AllData = readUrl(littleurl);
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse(Data.AllData);
+			Data.jsonArr = (JSONArray)obj;
+			JSONObject JSONobj = new JSONObject();
+			Data.match = new MatchData[Data.jsonArr.size()];
+			
+			int itt = 0;
+			for (Object object : Data.jsonArr) {
+				JSONobj =(JSONObject) object;
+				Data.Formatter (JSONobj, itt);
+				itt++;
+			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+
 		}
-		// JSONParser parse = new JSONParser();
 
 	}
 
 	private static String readUrl(String urlString) throws Exception {
-		BufferedReader reader = null;
 		try {
-			/*
-			 * URL url = new URL(urlString); HttpURLConnection conn =
-			 * (HttpURLConnection)url.openConnection(); reader = new BufferedReader(new
-			 * InputStreamReader(url.openStream())); StringBuffer buffer = new
-			 * StringBuffer(); int read; char[] chars = new char[1024]; while ((read =
-			 * reader.read(chars)) != -1) buffer.append(chars, 0, read);
-			 * 
-			 * return buffer.toString();
-			 */
-			HttpURLConnection con;
+			HttpURLConnection con;	
 			URL url = new URL(urlString);
 			con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("GET");
 			con.connect();
 			int responsecode = con.getResponseCode();
+			Scanner sc = new Scanner(url.openStream());
 			if (responsecode != 200)
 				throw new RuntimeException("HttpResponseCode: " + responsecode);
 
 			else {
-				Scanner sc = new Scanner(url.openStream());
+				
 				String inline = "";
 				while (sc.hasNext()) {
-					inline += sc.hasNextLine();
+					inline += sc.nextLine();
 				}
+				
 				System.out.println(inline);
-				JSONParser J = new JSONParser();
-
-				JSONObject jobj = (JSONObject) J.parse(inline);
-				JSONArray jsonarr_1 = (JSONArray) jobj.get("team_key");
-				// System.out.println(jsonarr_1);
+				/*
+				 * JSONParser J = new JSONParser(); JSONObject jobj =
+				 * (JSONObject)J.parse(inline);
+				 */
+				
 				return inline;
 			}
-
-		} finally {
-			if (reader != null)
-				reader.close();
 		}
-	}
+		finally {
+			
+		}
+		}
 
 	private static String prepareResultsUrlTwoMonthsAgo(String urlString) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // In order to take to two last months.
