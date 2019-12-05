@@ -10,7 +10,8 @@ import matchResultsData.MatchData;
 import matchResultsData.Statistics;
 
 public class ApplicationData {
-	
+	//macabbi zona
+	//HAPOEL EMPIRA
 	public String ResultApiURL;
 	public String AllData;
 	public JSONArray jsonArr;
