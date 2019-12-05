@@ -22,7 +22,8 @@ public class Utilities {
 	public static void main(String args[]) {
 		String resultsApi = "https://apiv2.apifootball.com/?action=get_events&from=$&to=*&league_id=149&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
 		Data = new ApplicationData();
-		Data.ResultApiURL = prepareResultsUrlTwoMonthsAgo(resultsApi);		
+		Data.ResultApiURL = prepareResultsUrlTwoMonthsAgo(resultsApi);	
+		//Data.playersApiUrl = preparePlayersUrl(playersApi);
 		
 		try {	
 			String littleurl = "https://apiv2.apifootball.com/?action=get_events&from=2019-11-27&to=2019-11-29&league_id=149&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
@@ -40,16 +41,19 @@ public class Utilities {
 				Data.MatchDataFormatter (JSONobj, itt);
 				itt++;
 			}
-
+			Data.printAllGood();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 
 		}
+		finally {
+		}
 
 	}
 
-	private static String readUrl(String urlString) throws Exception {
+	private static String readUrl(String urlString) throws Exception
+	{	//Relleavant for al Api
 		try {
 			HttpURLConnection con;	
 			URL url = new URL(urlString);
@@ -105,6 +109,10 @@ public class Utilities {
 		System.out.println(urlString);
 
 		return urlString;
-
 	}
+		private static String preparePlayersUrl(String urlString)
+		{	//Just for understand			
+			System.out.println(urlString);
+			return urlString;
+		}
 }

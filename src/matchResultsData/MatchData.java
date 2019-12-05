@@ -10,28 +10,29 @@ public class MatchData {
  private String league_name;
  private String match_date;
  private String match_status;
- private String match_time;
  private String match_hometeam_id;
  private String match_hometeam_name;
  private String match_hometeam_score;
  private String match_awayteam_name;
  private String match_awayteam_id;
  private String match_awayteam_score;
- private String match_hometeam_halftime_score;
- private String match_awayteam_halftime_score;
- private String match_hometeam_extra_score;
- private String match_awayteam_extra_score;
- private String match_hometeam_penalty_score;
- private String match_awayteam_penalty_score;
- private String match_hometeam_system;
- private String match_awayteam_system;
- private String match_live;
- ArrayList < Object > goalscorer = new ArrayList < Object > ();
- ArrayList < Object > cards = new ArrayList < Object > ();
- Substitutions SubstitutionsObject;
- Lineup LineupObject;
- ArrayList < Object > statistics = new ArrayList < Object > ();
-
+ ArrayList < Object > goalscorer = new ArrayList < Object > (); //Future implementation
+ private Statistics matchStat;
+ 
+ //private String match_time;
+ //private String match_hometeam_halftime_score;
+ //private String match_awayteam_halftime_score;
+ //private String match_hometeam_extra_score; - Check if relleavant
+ //private String match_awayteam_extra_score; - Check if relleavant
+ //private String match_hometeam_penalty_score;
+ //private String match_awayteam_penalty_score;
+ //private String match_hometeam_system;
+ //private String match_awayteam_system;
+ //private String match_live;
+ //ArrayList < Object > cards = new ArrayList < Object > ();
+ //Substitutions SubstitutionsObject;
+ //Lineup LineupObject;
+ //ArrayList < Object > statistics = new ArrayList < Object > ();
 
  // Getter Methods 
 
@@ -63,10 +64,9 @@ public class MatchData {
   return match_status;
  }
 
- public String getMatch_time() {
-  return match_time;
- }
-
+	/*
+	 * public String getMatch_time() { return match_time; }
+	 */
  public String getMatch_hometeam_id() {
   return match_hometeam_id;
  }
@@ -91,49 +91,35 @@ public class MatchData {
   return match_awayteam_score;
  }
 
- public String getMatch_hometeam_halftime_score() {
-  return match_hometeam_halftime_score;
- }
-
- public String getMatch_awayteam_halftime_score() {
-  return match_awayteam_halftime_score;
- }
-
- public String getMatch_hometeam_extra_score() {
-  return match_hometeam_extra_score;
- }
-
- public String getMatch_awayteam_extra_score() {
-  return match_awayteam_extra_score;
- }
-
- public String getMatch_hometeam_penalty_score() {
-  return match_hometeam_penalty_score;
- }
-
- public String getMatch_awayteam_penalty_score() {
-  return match_awayteam_penalty_score;
- }
-
- public String getMatch_hometeam_system() {
-  return match_hometeam_system;
- }
-
- public String getMatch_awayteam_system() {
-  return match_awayteam_system;
- }
-
- public String getMatch_live() {
-  return match_live;
- }
-
- public Substitutions getSubstitutions() {
-  return SubstitutionsObject;
- }
-
- public Lineup getLineup() {
-  return LineupObject;
- }
+	/*
+	 * public String getMatch_hometeam_halftime_score() { return
+	 * match_hometeam_halftime_score; }
+	 * 
+	 * public String getMatch_awayteam_halftime_score() { return
+	 * match_awayteam_halftime_score; }
+	 * 
+	 * public String getMatch_hometeam_extra_score() { return
+	 * match_hometeam_extra_score; }
+	 * 
+	 * public String getMatch_awayteam_extra_score() { return
+	 * match_awayteam_extra_score; }
+	 * 
+	 * public String getMatch_hometeam_penalty_score() { return
+	 * match_hometeam_penalty_score; }
+	 * 
+	 * public String getMatch_awayteam_penalty_score() { return
+	 * match_awayteam_penalty_score; }
+	 * 
+	 * public String getMatch_hometeam_system() { return match_hometeam_system; }
+	 * 
+	 * public String getMatch_awayteam_system() { return match_awayteam_system; }
+	 * 
+	 * public String getMatch_live() { return match_live; }
+	 * 
+	 * public Substitutions getSubstitutions() { return SubstitutionsObject; }
+	 * 
+	 * public Lineup getLineup() { return LineupObject; }
+	 */
 
  // Setter Methods 
 
@@ -164,10 +150,10 @@ public class MatchData {
  public void setMatch_status(String match_status) {
   this.match_status = match_status;
  }
-
- public void setMatch_time(String match_time) {
-  this.match_time = match_time;
- }
+	/*
+	 * public void setMatch_time(String match_time) { this.match_time = match_time;
+	 * }
+	 */
 
  public void setMatch_hometeam_id(String match_hometeam_id) {
   this.match_hometeam_id = match_hometeam_id;
@@ -192,48 +178,50 @@ public class MatchData {
  public void setMatch_awayteam_score(String match_awayteam_score) {
   this.match_awayteam_score = match_awayteam_score;
  }
+	/*
+	 * public void setMatch_hometeam_halftime_score(String
+	 * match_hometeam_halftime_score) { this.match_hometeam_halftime_score =
+	 * match_hometeam_halftime_score; }
+	 * 
+	 * public void setMatch_awayteam_halftime_score(String
+	 * match_awayteam_halftime_score) { this.match_awayteam_halftime_score =
+	 * match_awayteam_halftime_score; }
+	 * 
+	 * public void setMatch_hometeam_extra_score(String match_hometeam_extra_score)
+	 * { this.match_hometeam_extra_score = match_hometeam_extra_score; }
+	 * 
+	 * public void setMatch_awayteam_extra_score(String match_awayteam_extra_score)
+	 * { this.match_awayteam_extra_score = match_awayteam_extra_score; }
+	 * 
+	 * public void setMatch_hometeam_penalty_score(String
+	 * match_hometeam_penalty_score) { this.match_hometeam_penalty_score =
+	 * match_hometeam_penalty_score; }
+	 * 
+	 * public void setMatch_awayteam_penalty_score(String
+	 * match_awayteam_penalty_score) { this.match_awayteam_penalty_score =
+	 * match_awayteam_penalty_score; }
+	 * 
+	 * public void setMatch_hometeam_system(String match_hometeam_system) {
+	 * this.match_hometeam_system = match_hometeam_system; }
+	 * 
+	 * public void setMatch_awayteam_system(String match_awayteam_system) {
+	 * this.match_awayteam_system = match_awayteam_system; }
+	 * 
+	 * public void setMatch_live(String match_live) { this.match_live = match_live;
+	 * }
+	 * 
+	 * public void setSubstitutions(Substitutions substitutionsObject) {
+	 * this.SubstitutionsObject = substitutionsObject; }
+	 * 
+	 * public void setLineup(Lineup lineupObject) { this.LineupObject =
+	 * lineupObject; }
+	 */
 
- public void setMatch_hometeam_halftime_score(String match_hometeam_halftime_score) {
-  this.match_hometeam_halftime_score = match_hometeam_halftime_score;
- }
+public Statistics getMatchStat() {
+	return matchStat;
+}
 
- public void setMatch_awayteam_halftime_score(String match_awayteam_halftime_score) {
-  this.match_awayteam_halftime_score = match_awayteam_halftime_score;
- }
-
- public void setMatch_hometeam_extra_score(String match_hometeam_extra_score) {
-  this.match_hometeam_extra_score = match_hometeam_extra_score;
- }
-
- public void setMatch_awayteam_extra_score(String match_awayteam_extra_score) {
-  this.match_awayteam_extra_score = match_awayteam_extra_score;
- }
-
- public void setMatch_hometeam_penalty_score(String match_hometeam_penalty_score) {
-  this.match_hometeam_penalty_score = match_hometeam_penalty_score;
- }
-
- public void setMatch_awayteam_penalty_score(String match_awayteam_penalty_score) {
-  this.match_awayteam_penalty_score = match_awayteam_penalty_score;
- }
-
- public void setMatch_hometeam_system(String match_hometeam_system) {
-  this.match_hometeam_system = match_hometeam_system;
- }
-
- public void setMatch_awayteam_system(String match_awayteam_system) {
-  this.match_awayteam_system = match_awayteam_system;
- }
-
- public void setMatch_live(String match_live) {
-  this.match_live = match_live;
- }
-
- public void setSubstitutions(Substitutions substitutionsObject) {
-  this.SubstitutionsObject = substitutionsObject;
- }
-
- public void setLineup(Lineup lineupObject) {
-  this.LineupObject = lineupObject;
- }
+public void setMatchStat(Statistics matchStat) {
+	this.matchStat = matchStat;
+}
 }
