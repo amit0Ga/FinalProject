@@ -1,21 +1,24 @@
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import matchResultsData.MatchData;
+
 public class ApplicationData {
 	
-	public String URLAddress;
+	public String ResultApiURL;
 	public String AllData;
 	public JSONArray jsonArr;
 	public MatchData[] match;
 	
 	public ApplicationData() {
-		URLAddress = "";
+		ResultApiURL = "";
 		jsonArr = null;
 		AllData = "";
 		match = null;
 	}
 
-	public void Formatter(JSONObject jSONobj, int itt) {
+	public void MatchDataFormatter(JSONObject jSONobj, int itt) {
+		//
 		match[itt] = new MatchData();
 		String val = "";
 		

@@ -13,15 +13,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 
+import matchResultsData.MatchData;
+
 public class Utilities {
 	
 	static ApplicationData Data;
 	
 	public static void main(String args[]) {
-		//String resultsApi = "https://apiv2.apifootball.com/?action=get_events&from=$&to=*&league_id=149&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
-		//Data.URLAddress = prepareResultsUrlTwoMonthsAgo(resultsApi);
-		
+		String resultsApi = "https://apiv2.apifootball.com/?action=get_events&from=$&to=*&league_id=149&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
 		Data = new ApplicationData();
+		Data.ResultApiURL = prepareResultsUrlTwoMonthsAgo(resultsApi);		
 		
 		try {	
 			String littleurl = "https://apiv2.apifootball.com/?action=get_events&from=2019-11-27&to=2019-11-29&league_id=149&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
@@ -36,7 +37,7 @@ public class Utilities {
 			int itt = 0;
 			for (Object object : Data.jsonArr) {
 				JSONobj =(JSONObject) object;
-				Data.Formatter (JSONobj, itt);
+				Data.MatchDataFormatter (JSONobj, itt);
 				itt++;
 			}
 

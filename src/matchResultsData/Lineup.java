@@ -1,3 +1,4 @@
+package matchResultsData;
 public class Lineup {
  Lineup HomeObject;
  Away AwayObject;

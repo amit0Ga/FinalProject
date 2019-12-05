@@ -1,6 +1,7 @@
+package matchResultsData;
 import java.util.ArrayList;
 
-public class Home {
+public class Away {
  ArrayList < Object > starting_lineups = new ArrayList < Object > ();
  ArrayList < Object > substitutes = new ArrayList < Object > ();
  ArrayList < Object > coach = new ArrayList < Object > ();
