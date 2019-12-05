@@ -25,7 +25,8 @@ public class Utilities {
 		Data = new ApplicationData();
 		Data.ResultApiURL = prepareResultsUrlTwoMonthsAgo(resultsApi);		
 		
-		try {	
+		try {
+			//All results API
 			String littleurl = "https://apiv2.apifootball.com/?action=get_events&from=2019-11-27&to=2019-11-29&league_id=149&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
 			//Data.URLAddress = "https://apiv2.apifootball.com/?action=get_events&from=2019-11-27&to=2019-11-29&league_id=149&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
 			Data.AllData = readUrl(littleurl);
@@ -41,6 +42,13 @@ public class Utilities {
 				Data.MatchDataFormatter (JSONobj, itt);
 				itt++;
 			}
+			
+			//Next API
+			//Write new preapre url function
+			//overide Data.AllData
+			//parse again
+			//etc...
+			
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
