@@ -25,7 +25,7 @@ public class TeamInATable {
 	 private int away_league_L;
 	 private int away_league_PTS;
 	 
-	 
+	 //MTA ZONA KALBA
 
 	 public int getTeam_id() {
 	  return team_id;
