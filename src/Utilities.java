@@ -23,7 +23,7 @@ public class Utilities {
 	public static void main(String args[]) {
 		String resultsApi = "https://apiv2.apifootball.com/?action=get_events&from=$&to=*&league_id=149&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
 		Data = new ApplicationData();
-		Data.ResultApiURL = prepareResultsUrlTwoMonthsAgo(resultsApi);		
+		Data.ApiURL = prepareResultsUrlTwoMonthsAgo(resultsApi);		
 		
 		try {
 			//All results API
@@ -40,6 +40,17 @@ public class Utilities {
 			for (Object object : Data.jsonArr) {
 				JSONobj =(JSONObject) object;
 				Data.MatchDataFormatter (JSONobj, itt);
+				itt++;
+			}
+			String TableAPI = "https://apiv2.apifootball.com/?action=get_standings&league_id=149&APIkey=c8d7070a793a64e2caa3f0977247fcede6e90a5a38ac5a3f85963291ed7ecfc6";
+			Data.AllData = readUrl(TableAPI);
+			obj = parser.parse(Data.AllData);
+			Data.jsonArr = (JSONArray)obj;
+			
+			itt = 0;
+			for (Object object : Data.jsonArr) {
+				JSONobj =(JSONObject) object;
+				Data.TablehDataFormatter (JSONobj, itt);
 				itt++;
 			}
 			

@@ -5,21 +5,25 @@ import java.util.Iterator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import Table.TeamInATable;
 import matchResultsData.Team;
 import matchResultsData.MatchData;
 import matchResultsData.Statistics;
 
 public class ApplicationData {
-	public String ResultApiURL;
+	public String ApiURL;
 	public String AllData;
 	public JSONArray jsonArr;
 	public MatchData[] match;
+	public TeamInATable[] table;
 	
 	public ApplicationData() {
-		ResultApiURL = "";
+		ApiURL = "";
 		jsonArr = null;
 		AllData = "";
 		match = null;
+		table= new TeamInATable[24];
+		
 	}
 
 	public void MatchDataFormatter(JSONObject jSONobj, int itt) {
@@ -27,7 +31,6 @@ public class ApplicationData {
 		match[itt] = new MatchData();
 		Team matchHomeTeam = new Team();
 		Team matchAwayTeam = new Team();
-
 		//MISSING MATCH ID
 		String temp = "";
 		temp = (String)jSONobj.get("match_awayteam_id");
@@ -128,5 +131,84 @@ public class ApplicationData {
 
 	}
 
+	
+	
+	
+	public void TablehDataFormatter(JSONObject jSONobj, int itt) {
+		
+		table[itt] = new TeamInATable();
+	 
+
+		int temp = 0;
+		temp =  Integer.parseInt((String) jSONobj.get("overall_league_payed"));
+		table[itt].setOverall_league_payed(temp);
+		
+		temp =  Integer.parseInt((String) jSONobj.get("overall_league_W"));
+		table[itt].setOverall_league_W(temp);
+		
+		temp =  Integer.parseInt((String) jSONobj.get("overall_league_D"));
+		table[itt].setOverall_league_D(temp);
+		
+		temp =  Integer.parseInt((String) jSONobj.get("overall_league_L"));
+		table[itt].setOverall_league_L(temp);
+		
+		temp =  Integer.parseInt((String) jSONobj.get("overall_league_PTS"));
+		table[itt].setOverall_league_PTS(temp);
+		
+		
+		
+		temp =  Integer.parseInt((String) jSONobj.get("home_league_position"));
+		table[itt].setHome_league_position(temp);
+		
+		temp =  Integer.parseInt((String) jSONobj.get("home_league_payed"));
+		table[itt].setHome_league_payed(temp);
+		
+		temp =  Integer.parseInt((String) jSONobj.get("home_league_W"));
+		table[itt].setHome_league_W(temp);
+		
+		temp =  Integer.parseInt((String) jSONobj.get("home_league_D"));
+		table[itt].setHome_league_D(temp);
+		
+		temp =  Integer.parseInt((String) jSONobj.get("home_league_L"));
+		table[itt].setHome_league_L(temp);
+		
+		
+		temp =  Integer.parseInt((String) jSONobj.get("home_league_PTS"));
+		table[itt].setHome_league_PTS(temp);	
+		
+		
+		
+		
+	
+		
+		
+		
+		temp =  Integer.parseInt((String) jSONobj.get("away_league_position"));
+		table[itt].setAway_league_position(temp);
+		
+		temp =  Integer.parseInt((String) jSONobj.get("away_league_payed"));
+		table[itt].setAway_league_payed(temp);
+		
+		temp =  Integer.parseInt((String) jSONobj.get("away_league_W"));
+		table[itt].setAway_league_W(temp);
+		
+		temp =  Integer.parseInt((String) jSONobj.get("away_league_D"));
+		table[itt].setAway_league_D(temp);
+		
+		temp =  Integer.parseInt((String) jSONobj.get("away_league_L"));
+		table[itt].setAway_league_L(temp);
+		
+		
+		temp =  Integer.parseInt((String) jSONobj.get("away_league_PTS"));
+		table[itt].setAway_league_PTS(temp);	
+		
+		
+		System.out.println(temp + "CHACK IF MACCABI ZONA");
+		
+		System.out.println(temp + "YEp MACABBI ZONA");
+		
+	}
+	
+	
 	
 }

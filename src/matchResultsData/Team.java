@@ -19,6 +19,11 @@ public class Team {
 	//int Goalkeeper Saves;
 	private int attacks;
 	private int DangerousAttacks;
+	
+
+	 
+	 
+	 
 	public int getId() {
 		return id;
 	}
