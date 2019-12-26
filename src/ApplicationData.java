@@ -42,6 +42,9 @@ public class ApplicationData {
 		match[itt].setMatch_awayteam_name(temp);
 		matchAwayTeam.setName(temp);
 		
+		System.out.println(" ");
+		System.out.println(temp);
+		
 		temp = (String)jSONobj.get("match_awayteam_score");
 		match[itt].setMatch_awayteam_score(temp);
 		matchAwayTeam.setScore(Integer.parseInt(temp));
@@ -56,6 +59,10 @@ public class ApplicationData {
 		temp = (String)jSONobj.get("match_hometeam_name");
 		match[itt].setMatch_hometeam_name(temp);
 		matchHomeTeam.setName(temp);
+		
+		System.out.println(" ");
+		System.out.println(temp);
+
 		
 		temp = (String)jSONobj.get("match_hometeam_score");
 		match[itt].setMatch_hometeam_score(temp);
@@ -203,9 +210,10 @@ public class ApplicationData {
 		table[itt].setAway_league_PTS(temp);	
 		
 		
-		System.out.println(temp + "CHACK IF MACCABI ZONA");
+
+		System.out.println(temp + " MACABBI ZONA");
 		
-		System.out.println(temp + "YEp MACABBI ZONA");
+		
 		
 	}
 	
